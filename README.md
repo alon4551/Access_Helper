@@ -12,7 +12,7 @@ class **Col** has props of :
 ```
 class **Col** has constractor and actions that sets and gets the props above:
 ```
-    - public Col(string field, object value){//constractor
+    public Col(string field, object value){//constractor
         Set(field, value);
     }
     public void Set(string field, object value){
