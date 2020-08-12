@@ -1,13 +1,13 @@
 ### SQL_Generator
 this are files that helps developer create there own sql queris without dealing with syntax
 for this projects there are ***3*** basic classes that help build the SQL Queries:
-  -Col
-  -Row
-  -condition
+- Col
+- Row
+- Condition
 
 ## Class **Col** 
-*rep
-Has props of
+Represent a Colume in Database, each Colume has a value and the field name
+has Props of:
 ```C#
         private string Field {get;set;}//the field name of a colume
         private object Value {get;set;}//the value of the field (can be any value)
@@ -28,12 +28,13 @@ Class **Col** has public actions :
 3. ```GetField()``` return the Field name of Colume
 
 ## Class **Row** 
-Has Props of
-```
+Represent a Row in Database,each row has a list of Columes
+Has Props of:
+```C#
 private List<Col> Columes {get;set;} =new List<Col> //each row carry a list of columes
 ```
 And has a Constractors:
-```
+```C#
 public Row(List<Col> cols){
 Columes = cols;
 }
@@ -61,9 +62,24 @@ The Row class Have public actions
 - (**List < Col >** new_data, **List < Col >** Columes) update multiple columes
 
 ## Condition
-
-
-
+Represent a Conditions in a SQL Syntax Queries
+Has props of:
+```C#
+  private Col Value { get; set; }//the Colume that we want condition, with the value we want to check
+  private string Condition_Type { get; set; } = "=";//default condition is equal
+```
+Constractors:
+ - (**Col** value)
+ - (**string** field,**object** value)
+ - (**string** field,**object** value,**string** condition)
+ - The condition string can be only :
+    - `=`
+    - `!=`
+    - `>`
+    - `<`
+    - `>=`
+    - `<=`
+    
 ## SQL_Queries
 
 **It's a static class returning only sql queries strings**
@@ -71,8 +87,27 @@ The Row class Have public actions
  - **Has no Constractos**
 
 ### public static actions
-1. ```Insert``` return's a sql insert string
+1. `Insert` return's a sql insert string
   - (**string** table,**List < objects >** values)
-2. ```Delete``` return a sql delete string
-  - 
 
+2. `Delete` return a sql delete string
+  - (**string** table,**Condtion** condition) delete a rows from table with 1 Condition
+  - (**string** table, **List < Condition >** conditions,**string** Condition_Type)//deletes rows from table with Multi Condtions
+
+3. `Update` return a sql update string
+ - (**string** table,**List< Col>** Updated_Values,**Condition** Condition) updates rows  Cloumes by condition
+ - (**string** table,**List< Col>** Updated_Values,**List< Condition<** Condition,**string** ConditionType) updates rows  Cloumes by multiple conditions
+
+4. `Select` return a sql select string
+  - (**string** table) return all rows from table
+  - (**string** table,**List< string >** Columes) return all rows with specific columes
+  - (**string** table,**Condition** Condition) return all rows with a condition
+  - (**string** table , **List < Condition >** Conditions,**string** ConditionType) return rows by conditions
+  - (**string** table,**List< string >** Columes,**List< Condition >** Conditions,**string** ConditionType) return rows with specific columes by conditions
+  
+
+ Condition_Type is the connector between multiple conditions and can be only:
+ - `And`
+ - `Or` 
+
+### Getting Started
