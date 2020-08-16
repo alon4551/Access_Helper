@@ -83,11 +83,11 @@ Constructors:
 ## SQL_Queries
 
 **It's a static class returning only sql queries strings**
-### Constractors
- - **Has no Constractos**
+### Constructors
+ - **Has no constructors**
 
 ### public static actions
-1. `Insert` return's a sql insert string
+1. `Insert` returns a sql insert string
   - (**string** table,**List < objects >** values)
 
 2. `Delete` return a sql delete string
@@ -95,7 +95,7 @@ Constructors:
   - (**string** table, **List < Condition >** conditions,**string** Condition_Type)//deletes rows from table with Multi Condtions
 
 3. `Update` return a sql update string
- - (**string** table,**List< Col>** Updated_Values,**Condition** Condition) updates rows  Cloumes by condition
+ - (**string** table,**List< Col>** Updated_Values,**Condition** Condition) updates rows *Columns* by condition
  - (**string** table,**List< Col>** Updated_Values,**List< Condition<** Condition,**string** ConditionType) updates rows  Cloumes by multiple conditions
 
 4. `Select` return a sql select string

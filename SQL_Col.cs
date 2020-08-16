@@ -2,50 +2,67 @@
 
 public class Col
 {
-    private string Field {get;set;}
-    private object Value {get;set;}
+    //TODO: rename vars
+    private string _field {get;set;}
+    private object _value {get;set;}
 
     /// <summary>
     /// Create a Column
     /// </summary>
-    /// <param name="field"></param>
-    /// <param name="value"></param>
+    /// <param name="field">column name</param>
+    /// <param name="value">value in the column</param>
     public Col(string field, object value)
     {
         Set(field, value);
     }
+    /// <summary>
+    /// Set column values
+    /// </summary>
+    /// <param name="field">column name</param>
+    /// <param name="value">value in the column</param>
     public void Set(string field, object value)
     {
-        Field = field;
-        Value = value;
+        _field = field;
+        _value = value;
     }
+    /// <summary>
+    /// Copy column data from another column
+    /// </summary>
+    /// <param name="col">column to cope from</param>
     public void Set(Col col)
     {
-        Field = col.GetField();
-        Value = col.GetValue();
+        _field = col.GetField();
+        _value = col.GetValue();
     }
+
+    /// <summary>
+    /// Get column value
+    /// </summary>
     public object GetValue() {
-        return Value;
+        return _value;
     }
+    /// <summary>
+    /// Get column field
+    /// </summary>
     public string GetField() {
-        return Field;
+        return _field;
     }
+
+    /// <summary>
+    /// return the string of column value object
+    /// </summary>
+    /// <returns></returns>
     public string Value_SQL_Syntax()
     {
-        switch (Value.GetType().ToString())
-        {
-
-            case "System.String":
-                {
-                    return $"'{Value.ToString()}'";
-
-                }
-            default:
-                {
-                    return $"{Value.ToString()}";
-                }
-        }
+        return _value.GetType() is string ? $"'{_value.ToString()}'" : $"{_value.ToString()}";
     }
+
+    /// <summary>
+    /// Get list of columns from list of fields and values
+    /// </summary>
+    /// <param name="fields">list of column names</param>
+    /// <param name="values">list of data</param>
+    /// <returns></returns>
     public static List<Col> Get_SQL_Values(List<string> fields, List<object> values)
     {
         List<Col> list = new List<Col>();
@@ -53,33 +70,42 @@ public class Col
             list.Add(new Col(fields[i], values[i]));
         return list;
     }
-    public static string Values_SQL_Syntax(List<Col> Values, string Seperater)
+
+    /// <summary>
+    /// Returns a string from a list of columns seperated by a seperator
+    /// </summary>
+    /// <param name="Values">List of colomns</param>
+    /// <param name="seperator">the seperator</param>
+    /// <returns></returns>
+    public static string Values_SQL_Syntax(List<Col> Values, string seperator)
     {
         string syntax = "";
         int i = 0;
         foreach (Col update in Values)
         {
-
-            syntax += $"{update.Field}={update.Value_SQL_Syntax()}";
-            if (i != Values.Count - 1)
-            {
-                syntax += $"{Seperater}";
-            }
+            syntax += $"{update._field}={update.Value_SQL_Syntax()}";
+            if (i++ != Values.Count - 1)
+                syntax += $"{seperator}";
         }
-        return syntax.Trim(Seperater.ToCharArray()).Trim();
+        return syntax.Trim(seperator.ToCharArray()).Trim();
     }
-    public static string Values_SQL_Syntax(List<string> Values, string Seperater)
+    /// <summary>
+    /// Returns a string from a list of strings seperated by a seperator
+    /// </summary>
+    /// <param name="Values">List of strings</param>
+    /// <param name="seperator">the seperator</param>
+    /// <returns></returns>
+    public static string Values_SQL_Syntax(List<string> Values, string seperator)
     {
         string syntax = "";
         int i = 0;
         foreach (string update in Values)
         {
             syntax += $"{update}";
-            if (i != Values.Count - 1)
-                syntax += $"{Seperater}";
-            i++;
+            if (i++ != Values.Count - 1)
+                syntax += $"{seperator}";
         }
-        return syntax.Trim(Seperater.ToCharArray()).Trim();
+        return syntax.Trim(seperator.ToCharArray()).Trim();
     }
 
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public class Row{
 
-     List<Col> Columes { get; set; } = new List<Col>();
+    private List<Col> Columes { get; set; } = new List<Col>();
 
     public Row(List<Col> cols)
     {
