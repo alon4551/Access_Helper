@@ -2,14 +2,14 @@
 
 public class Col
 {
-    private string Field {
-        get;
-        set;
-    }
-    private object Value {
-        get;
-        set;
-    }
+    private string Field {get;set;}
+    private object Value {get;set;}
+
+    /// <summary>
+    /// Create a Column
+    /// </summary>
+    /// <param name="field"></param>
+    /// <param name="value"></param>
     public Col(string field, object value)
     {
         Set(field, value);
