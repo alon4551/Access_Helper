@@ -1,21 +1,21 @@
 ### SQL_Generator
-this are files that helps developer create there own sql queris without dealing with syntax
-for this projects there are ***3*** basic classes that help build the SQL Queries:
+This are files that help a developer create their own SQL queries without having to deal with syntax.
+For this projects there are **3** basic classes that help build the SQL Queries:
 - Col
 - Row
 - Condition
 
 ## Class **Col** 
-Represent a Colume in Database, each Colume has a value and the field name
+Represent a *Column* in Database, each column has a value and a field name
 has Props of:
 ```C#
         private string Field {get;set;}//the field name of a colume
         private object Value {get;set;}//the value of the field (can be any value)
 ```
 
-Constractors: 
-- (**string** field, **object** value) create a new Colume with the data
-- ***no empty contractor***
+Constructors: 
+- (**string** field, **object** value) create a new Column with the data
+- ***no empty constructos***
 
 Class **Col** has public actions :
 
@@ -23,24 +23,24 @@ Class **Col** has public actions :
   - (**string** field, **object** value) 
   - (**Col** col)
   
-2. ```GetValue()``` return the value of Colume
+2. ```GetValue()``` return the value of Column
 
-3. ```GetField()``` return the Field name of Colume
+3. ```GetField()``` return the Field name of Column
 
 ## Class **Row** 
-Represent a Row in Database,each row has a list of Columes
+Represent a Row in Database,each row has a list of Columns
 Has Props of:
 ```C#
-private List<Col> Columes {get;set;} =new List<Col> //each row carry a list of columes
+private List<Col> Columes {get;set;} = new List<Col> //each row carry a list of columns
 ```
-And has a Constractors:
+And has a Constructor:
 ```C#
 public Row(List<Col> cols){
 Columes = cols;
 }
-public Row(){ //empty constractor}
+public Row(){ //empty constructor}
 ```
-The Row class Have public actions
+The Row class have public actions
 1. ```AddColume``` with diffrent parametes also check for repetition
 - (**Col** col) 
 - (**string** field,**object** value)
@@ -68,7 +68,7 @@ Has props of:
   private Col Value { get; set; }//the Colume that we want condition, with the value we want to check
   private string Condition_Type { get; set; } = "=";//default condition is equal
 ```
-Constractors:
+Constructors:
  - (**Col** value)
  - (**string** field,**object** value)
  - (**string** field,**object** value,**string** condition)
@@ -83,11 +83,11 @@ Constractors:
 ## SQL_Queries
 
 **It's a static class returning only sql queries strings**
-### Constractors
- - **Has no Constractos**
+### Constructors
+ - **Has no constructors**
 
 ### public static actions
-1. `Insert` return's a sql insert string
+1. `Insert` returns a sql insert string
   - (**string** table,**List < objects >** values)
 
 2. `Delete` return a sql delete string
@@ -95,7 +95,7 @@ Constractors:
   - (**string** table, **List < Condition >** conditions,**string** Condition_Type)//deletes rows from table with Multi Condtions
 
 3. `Update` return a sql update string
- - (**string** table,**List< Col>** Updated_Values,**Condition** Condition) updates rows  Cloumes by condition
+ - (**string** table,**List< Col>** Updated_Values,**Condition** Condition) updates rows *Columns* by condition
  - (**string** table,**List< Col>** Updated_Values,**List< Condition<** Condition,**string** ConditionType) updates rows  Cloumes by multiple conditions
 
 4. `Select` return a sql select string

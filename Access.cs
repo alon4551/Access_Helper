@@ -14,8 +14,7 @@ public class Access
         private static OleDbConnection Connection=new OleDbConnection(ConnectionStr);
         private static OleDbDataReader Reader;
 
-
-
+            private static void testc() { }
         private static void ConnectionState(bool state)
         {
 

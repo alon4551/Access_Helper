@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 public class Row{
-     List<Col> Columes { get; set; } = new List<Col>();
+
+    private List<Col> Columes { get; set; } = new List<Col>();
+
     public Row(List<Col> cols)
     {
         Columes = cols;
@@ -14,6 +17,7 @@ public class Row{
 
     }
     public List<Col> GetColumes() { return Columes; }
+
     private bool ExistColume(Col col)
     {
         foreach (Col colume in Columes)

@@ -1,5 +1,5 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 public class Condition
 {
     private Col Value { get; set; }
@@ -37,7 +37,6 @@ public class Condition
     public string GetCondition() {
         return Condition_Type;
     }
-
 
     public string SQL_Syntax() {
         return $"{Value.GetField()} {Condition_Type} {Value.Value_SQL_Syntax()}";
