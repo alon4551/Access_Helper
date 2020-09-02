@@ -54,7 +54,7 @@ public class Col
     /// <returns></returns>
     public string Value_SQL_Syntax()
     {
-        return _value.GetType() is string ? $"'{_value.ToString()}'" : $"{_value.ToString()}";
+        return _value is string ? $"'{_value.ToString()}'" : $"{_value.ToString()}";
     }
 
     /// <summary>
