@@ -178,7 +178,7 @@ public class Row{
     /// <param name="Col">column to update colume with new value (fields must be idintical)</param>
     public void UpdateColume(Col New_data) {
         foreach(Col col in Columes){
-            if(col.GetField()== New_data.getField())
+            if(col.GetField()== New_data.GetField())
                 {
                     col.Set(New_data);
                     break;
