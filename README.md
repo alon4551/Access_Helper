@@ -111,3 +111,33 @@ Constructors:
  - `Or` 
 
 # Getting Started
+## this set of files are only for the access DB so you will need to follow this steps
+1. Download the peoject and add the files to you project 
+2. install the microsoft Access DB engine https://www.microsoft.com/en-us/download/details.aspx?id=13255
+3. change in Access File the Data Source of your DB in the variable `ConnectionStr` ```Data Source=your_db_url.accdb```
+4. enjoy 
+
+# exemple how to use 
+1 execute a command 
+``` C#
+string query="your query";
+if(Access.Execute(query)){
+//your query was a success
+}
+else{
+//your query faild please use the Access.ExplaindError() function to get the Error message
+}
+```
+
+2 fetching data 
+```C#
+string query="your query";
+List<Row> table=Access.getObjects(query);
+if(table!=null){
+//your query was a success
+}
+else{
+//your query faild please use the Access.ExplaindError() function to get the Error message
+}
+```
+
