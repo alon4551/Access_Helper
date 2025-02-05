@@ -1,4 +1,4 @@
-### SQL_Generator
+### Custon ORM
 This are files that help a developer create their own SQL queries without having to deal with syntax.
 For this projects there are **3** basic classes that help build the SQL Queries:
 - Col
